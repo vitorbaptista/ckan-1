@@ -1,4 +1,3 @@
-====================
 Contributing to CKAN
 ====================
 
@@ -139,7 +138,6 @@ When merging a feature or bug branch into master:
 - Use the ``--no-ff`` option in the ``git merge`` command,
 
 
-====================================
 Contributing to CKAN's Documentation
 ====================================
 
