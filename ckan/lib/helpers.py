@@ -10,6 +10,7 @@ import datetime
 import logging
 import re
 import urllib
+import urlparse
 import pprint
 import copy
 from urllib import urlencode
@@ -967,6 +968,22 @@ def resource_link(resource_dict, package_id):
                   id=package_id,
                   resource_id=resource_dict['id'])
     return link_to(text, url)
+
+
+def filestore_url_convert(resource_dict, qualified=False):
+    if resource_dict['url_type'] != 'filestore':
+        return resource_dict
+    resource_url = resource_dict['url']
+    url_scheme = urlparse.urlsplit(resource_url).scheme
+    if qualified and not url_scheme:
+        # return fully qualified url if it isn't one
+        resource_dict['url'] = ''.join([url('/', locale='default',
+            qualified=True), resource_url.lstrip('/')])
+    if not qualified and url_scheme:
+        # return relative url if it isn't one
+        resource_dict['url'] = ''.join(['/', resource_url.lstrip(url('/',
+            locale='default', qualified=True))])
+    return resource_dict
 
 
 def related_item_link(related_item_dict):
