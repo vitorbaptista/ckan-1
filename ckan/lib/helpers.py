@@ -974,15 +974,15 @@ def filestore_url_convert(resource_dict, qualified=False):
     if resource_dict['url_type'] != 'filestore':
         return resource_dict
     resource_url = resource_dict['url']
+    ckan_url = url('/', locale='default', qualified=True)
     url_scheme = urlparse.urlsplit(resource_url).scheme
     if qualified and not url_scheme:
         # return fully qualified url if it isn't one
-        resource_dict['url'] = ''.join([url('/', locale='default',
-            qualified=True), resource_url.lstrip('/')])
+        resource_dict['url'] = ''.join([ckan_url,
+            resource_url.lstrip('/')])
     if not qualified and url_scheme:
         # return relative url if it isn't one
-        resource_dict['url'] = ''.join(['/', resource_url.lstrip(url('/',
-            locale='default', qualified=True))])
+        resource_dict['url'] = ''.join(['/', resource_url.split(ckan_url)[1]])
     return resource_dict
 
 
