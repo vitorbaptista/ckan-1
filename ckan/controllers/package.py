@@ -540,7 +540,7 @@ class PackageController(base.BaseController):
         if pkg_dict['state'].startswith('draft'):
             # dataset has not yet been fully created
             resource_dict = get_action('resource_show')(context, {'id': resource_id})
-            fields = ['url', 'resource_type', 'format', 'name', 'description', 'id']
+            fields = ['url', 'url_type', 'resource_type', 'format', 'name', 'description', 'id']
             data = {}
             for field in fields:
                 data[field] = resource_dict[field]
