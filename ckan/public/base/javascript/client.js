@@ -26,7 +26,7 @@
     },
 
     /* Simple helper function for both GET's and POST's to the ckan API
-     * 
+     *
      * type - GET or POST
      * path - The API endpoint
      * data - Any data you need passing to the endpoint
@@ -320,15 +320,17 @@
       var filename = meta['filename-original'] || meta.key;
       var format = meta._format || filename.split('.').pop();
       var url = meta._location;
+      var url_type = null
 
       // If this is a local upload then the returned url will not have a domain
-      // and we should add one.
+      // and we should mark it as a filestore url.
       if (url.indexOf('://') === -1) {
-        url = ckan.url(url);
+        url_type = 'filestore';
       }
 
       return {
         url: url,
+        url_type: url_type,
         key: meta.key, /* Not strictly Resource data but may be useful */
         name: filename,
         size: meta._content_length,
