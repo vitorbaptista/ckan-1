@@ -139,9 +139,14 @@ def resource_dictize(res, context):
         resource['tracking_summary'] = tracking
     resource['format'] = _unified_resource_format(res.format)
     # some urls do not have the protocol this adds http:// to these
+    # if they are not of url_type filestore
     url = resource['url']
-    if not urlparse.urlsplit(url).scheme:
+    if (not urlparse.urlsplit(url).scheme and resource['url_type'] !=
+            'filestore'):
         resource['url'] = u'http://' + url.lstrip('/')
+    # for filestore urls, generate the full urls to keep API consistent
+    if resource['url_type'] == 'filestore':
+        h.filestore_url_convert(resource, qualified=True)
     return resource
 
 def related_dictize(rel, context):
