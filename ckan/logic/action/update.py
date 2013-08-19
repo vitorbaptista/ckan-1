@@ -19,6 +19,7 @@ import ckan.lib.navl.validators as validators
 import ckan.lib.plugins as lib_plugins
 import ckan.lib.email_notifications as email_notifications
 import ckan.lib.search as search
+import ckan.lib.helpers as h
 
 from ckan.common import _, request
 
@@ -304,6 +305,10 @@ def package_update(context, data_dict):
         {"metadata_modified": datetime.datetime.utcnow()})
     model.Session.refresh(pkg)
 
+    resource_dict = []
+    for res in data['resources']:
+        resource_dict.append(h.filestore_url_convert(res, qualified=False))
+    data['resources'] = resource_dict
     pkg = model_save.package_dict_save(data, context)
 
     context_org_update = context.copy()
