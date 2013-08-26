@@ -971,7 +971,7 @@ def resource_link(resource_dict, package_id):
 
 
 def filestore_url_convert(resource_dict, qualified=False):
-    if resource_dict['url_type'] != 'filestore':
+    if resource_dict.get('url_type') != 'filestore':
         return resource_dict
     resource_url = resource_dict['url']
     ckan_url = url('/', locale='default', qualified=True)
