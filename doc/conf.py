@@ -149,9 +149,31 @@ sys.path.append(os.path.abspath('_themes'))
 html_theme_path = ['_themes']
 html_theme = 'default'
 html_theme_options = {
-        'logo_icon': 'http://assets.okfn.org/p/opendatahandbook/img/data-wrench-inverted.png',
-        'show_version': True
-    }
+        'externalrefs': True,
+
+        'bgcolor': '#ffffff',
+        'textcolor': '#444444',
+        'linkcolor': '#0d4252',
+        'visitedlinkcolor': '#0d4252',
+
+        'relbarbgcolor': '#003647',
+        'relbartextcolor': '#ffffff',
+        'relbarlinkcolor': '#ffffff',
+
+        'footerbgcolor': '#003647',
+        'footertextcolor': '#ffffff',
+
+        'sidebarbgcolor': '#005d7a',
+        'sidebartextcolor': '#ffffff',
+        'sidebarlinkcolor': '#ffffff',
+
+        'headbgcolor': '#eeeeee',
+        'headtextcolor': '#444444',
+        'headlinkcolor': '#444444',
+
+        'codebgcolor': '#eeeeee',
+        'codetextcolor': '#114c45',
+}
 
 html_sidebars = {
     '**':  ['relations.html', 'globaltoc.html'],
