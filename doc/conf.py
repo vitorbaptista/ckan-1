@@ -152,7 +152,7 @@ pygments_style = 'sphinx'
 #}
 sys.path.append(os.path.abspath('_themes'))
 html_theme_path = ['_themes']
-html_theme = 'sphinx-theme-okfn'
+html_theme = 'default'
 html_theme_options = {
         'logo_icon': 'http://assets.okfn.org/p/opendatahandbook/img/data-wrench-inverted.png',
         'show_version': True
