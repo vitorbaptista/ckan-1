@@ -569,7 +569,7 @@ class PackageController(base.BaseController):
     def new_resource(self, id, data=None, errors=None, error_summary=None):
         '''New resources are created before resource upload in the pending
         state which will be made active by the edit action'''
-        data = {'package_id': id, 'url': 'pending', 'state': 'pending'}
+        data = {'package_id': id, 'url': 'http://', 'state': 'unsaved'}
         context = {'model': model, 'session': model.Session,
                    'user': c.user or c.author}
         resource = get_action('resource_create')(context, data)
