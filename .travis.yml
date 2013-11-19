@@ -1,4 +1,8 @@
 language: python
+cache:
+  apt: true
+  directories:
+    - $HOME/.npm
 python:
   - "2.6"
   - "2.7"
