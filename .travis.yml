@@ -3,6 +3,7 @@ cache:
   apt: true
   directories:
     - $HOME/.npm
+    - $HOME/virtualenv
 python:
   - "2.6"
   - "2.7"
