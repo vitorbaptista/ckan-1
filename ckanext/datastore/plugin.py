@@ -47,7 +47,8 @@ class DatastorePlugin(p.SingletonPlugin):
             msg = ('The "datastore" extension must be the first IDatastore '
                    'extension loaded. Change the order it is loaded in '
                    '"ckan.plugins" in your CKAN .ini file and try again.')
-            print DatastoreException(msg)
+            p.plugins_update()
+            raise DatastoreException(msg)
 
         super(self.__class__, self).__init__(*args, **kwargs)
 
