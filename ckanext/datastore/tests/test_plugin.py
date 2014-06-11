@@ -20,8 +20,3 @@ class TestPlugin(object):
         p.load('sample_datastore_plugin')
         p.unload('sample_datastore_plugin')
         p.unload('datastore')
-
-    def test_loading_datastore_last_doesnt_work(self):
-        p.load('sample_datastore_plugin')
-        assert_raises(datastore.DatastoreException, p.load, 'datastore')
-        p.unload('sample_datastore_plugin')
